@@ -29,6 +29,13 @@ input{
   outline: none;
   color: white;
 }
+.warn{
+   border:none;
+  border-bottom: 1px solid #95d6a4;
+  width: 100%;
+  outline: none;
+  color: white;
+}
 .form > div{
   display: grid;
   gap: 2px;
