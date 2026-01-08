@@ -13,7 +13,7 @@ main {
 
 } */
 .logo{
-  font-size: 60px;
+  font-size: 80px;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .reqo{
@@ -36,10 +36,10 @@ input{
   outline: none;
   color: white;
 }
-.form > div{
+/* .form > div{
   display: grid;
   gap: 2px;
-}
+} */
 .form > div > h2{
   color: white;
   font-size: 14px;

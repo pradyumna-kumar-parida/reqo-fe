@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaHandPointRight } from "react-icons/fa6";
 import Signup from "./Signup";
 import Login from "./Login";
+import { baseURL } from "../util";
+import axios from "axios";
 const Home = () => {
   const [click, setClick] = useState(false);
   const [login, setLogin] = useState(false);
@@ -9,14 +11,21 @@ const Home = () => {
   console.log("home", click);
   console.log("login", login);
   console.log("signup open", login);
-
+  useEffect(() => {
+    const welcome = async () => {
+      const api = await axios.post(baseURL + "/user/welcome");
+      const result = await api.data;
+      console.log("result", result);
+    };
+    welcome();
+  }, []);
   return (
-    <main className="grid grid-rows-2 lg:h-screen  lg:grid-cols-2   ">
-      <section className="home px-5 lg:ml-50 flex flex-col mt-19 md:py-5 lg:py-20  ">
+    <main className="grid min-h-screen grid-cols-1 lg:grid-cols-2 overflow-hidden">
+      <section className="home flex flex-col  justify-center px-5 md:px-10 lg:px-20">
         <h1 className={`logo ${click ? "text-[#95d6a4]" : "text-[#d9ca26]"}`}>
           R <span className="reqo">eqo</span>
         </h1>
-        <h2 className="text-xl font-bold text-white">
+        <h2 className="text-xl lg:text-5xl sm:text-3xl font-bold text-white">
           Chat Only ,{" "}
           <span
             className={`${
@@ -26,7 +35,7 @@ const Home = () => {
             When Both Agree....
           </span>
         </h2>
-        <p className="text-base sm:text-md mt-5 font-semibold text-white ">
+        <p className="text-base sm:text-lg  lg:text-xl mt-5 font-semibold text-white ">
           Reqo is a request-based chatting platform where conversations start
           only after mutual acceptance. Send a chat request, wait for approval,
           and talk only when the other person is ready. Simple. Respectful.
@@ -44,7 +53,7 @@ const Home = () => {
           </i>
         </button>
       </section>
-      <section className="md:py-4 lg:mr-20 mb-4  ">
+      <section className="h-max lg:h-screen md:py-8 lg:mr-20  grid items-center ">
         {signup && (
           <Signup clicked={click} signup={signup} setLogin={setLogin} />
         )}

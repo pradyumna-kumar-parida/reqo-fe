@@ -7,7 +7,7 @@ const Login = (props) => {
   }, [login]);
 
   return (
-    <div className="  h-full grid items-center px-3 sm:px-10">
+    <div className="  h-full grid items-center mt-13 px-3 sm:px-10 self-center">
       <form
         method="dialog"
         action=""
