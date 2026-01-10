@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Homepage/Home";
 import LandPage from "./Landingpage/landPage";
 import ProtectedRoutes from "./Landingpage/ProtectedRoutes";
+import RequestPage from "./Requests/request";
 
 const App = () => {
   return (
@@ -16,6 +17,14 @@ const App = () => {
             element={
               <ProtectedRoutes>
                 <LandPage />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/requests"
+            element={
+              <ProtectedRoutes>
+                <RequestPage />
               </ProtectedRoutes>
             }
           />

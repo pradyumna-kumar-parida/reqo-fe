@@ -8,16 +8,9 @@ const Sidebar = () => {
     : "";
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col w-full">
       {/* Profile Header */}
-      <div className="flex items-center gap-3 p-4 bg-black">
-        <img
-          src="https://cdn-icons-png.flaticon.com/128/19006/19006438.png"
-          alt="profile"
-          className="w-10 h-10 rounded-full"
-        />
-        <span className="font-semibold text-white">{fullName}</span>
-      </div>
+      
       <div className="px-3 py-5">
         <input
           type="text"

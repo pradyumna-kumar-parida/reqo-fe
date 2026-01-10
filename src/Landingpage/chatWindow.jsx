@@ -2,7 +2,7 @@ import React from "react";
 import { CiMenuKebab } from "react-icons/ci";
 const ChatWindow = () => {
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full w-full flex flex-col">
       {/* Chat Header */}
       <div className="flex items-center justify-between gap-3 p-4 bg-[#95d6a4]">
         <span className="flex gap-3 items-center">
