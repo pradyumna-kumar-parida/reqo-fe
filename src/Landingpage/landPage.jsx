@@ -7,7 +7,7 @@ export default function LandPage() {
     <>
       <div className="h-screen w-screen flex bg-[#0b141a] text-white">
         {/* Menu */}
-        <div className="w-[15%]">
+        <div className="w-[10%]">
           <MenuReqo />
         </div>
 

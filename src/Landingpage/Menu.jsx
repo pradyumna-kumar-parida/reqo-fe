@@ -1,17 +1,12 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import logo from "../../public/chat.png";
+ import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
-const style = {
+ const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
@@ -27,25 +22,111 @@ export default function MenuReqo() {
   const fullName = user
     ? `${user.firstName.toUpperCase()} ${user.lastName.toUpperCase()}`
     : "";
+const mainOptions = ["Chats", "Requests", "Contacts", "Profile"];
+  const [open, setOpen] = React.useState(false);
+  const [activeIndex, setActiveIndex] = React.useState(null);
 
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+ const navigate = useNavigate();
+  const handleMenus = (options) => {
+    console.log("Clicked", options);
+    if (mainOptions[1] === options) {
+      console.log("right");
+      navigate("/requests");
+    } 
+    else if(mainOptions[0] === options)
+    {
+      navigate("/landingsection")
+    }
+    else {
+      console.log("Wrong");
+    }
+  };
+   const handleLogout = () => {
+    handleOpen()
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
   return (
-    <div className="h-screen w-full bg-[#0b141a] text-white flex flex-col justify-between border-r border-gray-700">
+    <>
+       <Modal
+        keepMounted
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="keep-mounted-modal-title"
+        aria-describedby="keep-mounted-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
+            Are you sure you want to log out?
+          </Typography>
+
+          <Typography
+            id="keep-mounted-modal-description"
+            sx={{ mt: 2, color: "text.secondary" }}
+          >
+            You will be signed out of your account.
+          </Typography>
+
+          {/* Buttons */}
+          <Box
+            sx={{
+              mt: 3,
+              display: "flex",
+              justifyContent: "flex-end",
+              gap: 2,
+            }}
+          >
+            <Button variant="outlined" onClick={handleClose}>
+              Cancel
+            </Button>
+
+            <Button variant="contained" color="error" onClick={handleLogout}>
+              Log out
+            </Button>
+          </Box>
+        </Box>
+      </Modal>
+
+    <div className="h-screen w-full bg-white text-black flex flex-col justify-between border-r border-gray-700">
       {/* Top Logo */}
       <div>
-        <div className="px-4 py-3 bg-black">
-          <img src={logo} alt="logo" className="h-12 mx-auto" />
+        <div className="px-4 py-3 bg-black ">
+          <img src={logo} alt="logo" className="h-12 mx-auto drop-shadow-[0_0_12px_rgba(255,255,255,0.6)]" />
         </div>
 
         {/* Menu */}
         <ul className="mt-4">
-          {["Chats", "Requests", "Contacts", "Profile"].map((item) => (
+       {mainOptions.map((item, i) => (
+        <li
+          key={item}
+          onClick={() => {
+            handleMenus(item);
+            setActiveIndex(i);
+          }}
+          className={`px-6 py-3 cursor-pointer hover:bg-gray-100 ${
+            activeIndex === i ? "bg-red-500 text-white" : ""
+          }`}
+        >
+          {item}
+        </li>
+        ))}
+
+        </ul>
+         <Divider/>
+         <ul className="mt-4">
             <li
-              key={item}
-              className="px-6 py-3 hover:bg-gray-800 cursor-pointer"
+              className="px-6 py-3 text-blue-700 font-bold hover:bg-gray-100 cursor-pointer"
             >
-              {item}
+              Setting
             </li>
-          ))}
+            <li
+           onClick={handleOpen}
+              className="px-6 py-3 text-red-500 font-bold hover:bg-gray-100 cursor-pointer"
+            >
+              Logout
+            </li>
         </ul>
       </div>
 
@@ -55,9 +136,11 @@ export default function MenuReqo() {
           src="https://cdn-icons-png.flaticon.com/128/19006/19006438.png"
           className="w-9 h-9 rounded-full"
         />
-        <span className="text-sm font-semibold">{fullName}</span>
+        <span className="text-sm text-white font-semibold">{fullName}</span>
       </div>
+     
     </div>
+    </>
   );
 }
 
