@@ -50,7 +50,7 @@ const mainOptions = ["Chats", "Requests", "Contacts", "Profile"];
   };
   return (
     <>
-       <Modal
+      <Modal
         keepMounted
         open={open}
         onClose={handleClose}
@@ -89,57 +89,57 @@ const mainOptions = ["Chats", "Requests", "Contacts", "Profile"];
         </Box>
       </Modal>
 
-    <div className="h-screen w-full bg-white text-black flex flex-col justify-between border-r border-gray-700">
-      {/* Top Logo */}
-      <div>
-        <div className="px-4 py-3 bg-black ">
-          <img src={logo} alt="logo" className="h-12 mx-auto drop-shadow-[0_0_12px_rgba(255,255,255,0.6)]" />
-        </div>
+      <div className="h-screen w-full bg-white text-black flex flex-col justify-between border-r border-gray-700">
+        {/* Top Logo */}
+        <div>
+          <div className="px-4 py-3 bg-[#020617] ">
+            <img
+              src={logo}
+              alt="logo"
+              className="h-12 mx-auto drop-shadow-[0_0_12px_rgba(255,255,255,0.6)]"
+            />
+          </div>
 
-        {/* Menu */}
-        <ul className="mt-4">
-       {mainOptions.map((item, i) => (
-        <li
-          key={item}
-          onClick={() => {
-            handleMenus(item);
-            setActiveIndex(i);
-          }}
-          className={`px-6 py-3 cursor-pointer hover:bg-gray-100 ${
-            activeIndex === i ? "bg-red-500 text-white" : ""
-          }`}
-        >
-          {item}
-        </li>
-        ))}
-
-        </ul>
-         <Divider/>
-         <ul className="mt-4">
-            <li
-              className="px-6 py-3 text-blue-700 font-bold hover:bg-gray-100 cursor-pointer"
-            >
+          {/* Menu */}
+          <ul className="mt-4">
+            {mainOptions.map((item, i) => (
+              <li
+                key={item}
+                onClick={() => {
+                  handleMenus(item);
+                  setActiveIndex(i);
+                }}
+                className={`px-6 py-3 cursor-pointer hover:bg-gray-100 ${
+                  activeIndex === i ? "bg-red-500 text-white" : ""
+                }`}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+          <Divider />
+          <ul className="mt-4">
+            <li className="px-6 py-3 text-blue-700 font-bold hover:bg-gray-100 cursor-pointer">
               Setting
             </li>
             <li
-           onClick={handleOpen}
+              onClick={handleOpen}
               className="px-6 py-3 text-red-500 font-bold hover:bg-gray-100 cursor-pointer"
             >
               Logout
             </li>
-        </ul>
-      </div>
+          </ul>
+        </div>
 
-      {/* Bottom User */}
-      <div className="flex items-center gap-3 p-4 bg-black">
-        <img
-          src="https://cdn-icons-png.flaticon.com/128/19006/19006438.png"
-          className="w-9 h-9 rounded-full"
-        />
-        <span className="text-sm text-white font-semibold">{fullName}</span>
+        {/* Bottom User */}
+        <div className="flex items-center gap-3 p-4 bg-[#020617]">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/19006/19006438.png"
+            className="w-9 h-9 rounded-full border-4 border-white "
+          />
+          <span className="text-sm text-white font-semibold">{fullName}</span>
+        </div>
       </div>
-     
-    </div>
     </>
   );
 }
