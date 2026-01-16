@@ -57,6 +57,8 @@ const SendReq = () => {
     };
     handleSendRequest();
   }, [requested_userid]);
+
+  
   useEffect(() => {
     if (!reqSent) return;
 
@@ -109,7 +111,7 @@ const SendReq = () => {
             {/* Right: Buttons */}
             <div className="flex gap-3">
               <button
-                className="px-4 py-2 rounded-lg bg-[#95d6a4] text-black font-medium  cursor-pointer active:scale-105"
+                className="px-4 py-2 rounded-lg bg-blue-700 text-white font-medium  cursor-pointer active:scale-105"
                 onClick={() => setReqUserId(user._id)}
               >
                 Send

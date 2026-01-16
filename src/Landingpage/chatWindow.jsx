@@ -1,6 +1,8 @@
 import React from "react";
 import { CiMenuKebab } from "react-icons/ci";
-const ChatWindow = () => {
+const ChatWindow = ({ user }) => {
+  console.log("userrrr", user);
+
   return (
     <div className="h-full w-full flex flex-col">
       {/* Chat Header */}
@@ -11,7 +13,10 @@ const ChatWindow = () => {
             alt="user"
             className="w-10 h-10 rounded-full"
           />
-          <span className="font-bold text-xl text-black">Niku 😁</span>
+          <span className="flex flex-col gap-0">
+            <p className="font-bold text-xl  text-black">Niku</p>
+            <h6 className="text-gray-600 text-sm">Online</h6>
+          </span>
         </span>
         <i className="text-black font-extrabold text-2xl cursor-pointer">
           <CiMenuKebab />
@@ -20,23 +25,23 @@ const ChatWindow = () => {
 
       {/* Messages */}
       <div className="flex-1 p-4 space-y-3 overflow-y-auto bg-white">
-        <div className="self-start bg-[#202c33] px-3 py-2 rounded-lg w-fit">
+        <div className="self-start bg-[#020617] px-3 py-2 rounded-lg w-fit">
           Hero bhai
         </div>
 
-        <div className="self-end bg-[#95d6a4]  text-black px-3 py-2 rounded-lg w-fit ml-auto">
+        <div className="self-end bg-[#9fa2a580] text-black px-3 py-2 rounded-lg w-fit ml-auto">
           Hello 😄 ,How are you ?
         </div>
       </div>
 
       {/* Input */}
-      <div className="p-4 bg-[#202c33] flex gap-2">
+      <div className="p-4 bg-[#0f172a] flex gap-2">
         <input
           type="text"
           placeholder="Type a message"
-          className="flex-1 px-4 py-2 rounded-full bg-[#2a3942] outline-none"
+          className=" type flex-1 px-4 py-3 rounded-full  outline-none "
         />
-        <button className="bg-[#95d6a4] font-semibold px-4 py-2 text-black cursor-pointer active:scale-105 rounded-full">
+        <button className="bg-[#95d6a4]  text-lg font-semibold px-6 py-1 text-black cursor-pointer active:scale-105 rounded-full">
           Send
         </button>
       </div>

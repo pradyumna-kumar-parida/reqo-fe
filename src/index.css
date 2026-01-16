@@ -22,12 +22,23 @@ main {
   /* letter-spacing: .05em; */
 }
 input{
+
   /* background-color: white; */
   border:none;
   border-bottom: 1px solid #d9ca26;
   width: 100%;
   outline: none;
   color: white;
+}
+.type{
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: none;
+ box-shadow: 0 0 3px rgb(0, 0, 0) inset;
+ font-weight: 600;
+}
+.type::placeholder{
+  color: black;
 }
 .warn{
    border:none;
