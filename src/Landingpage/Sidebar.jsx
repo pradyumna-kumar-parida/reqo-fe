@@ -4,11 +4,9 @@ import { baseURL } from "../util";
 
 const Sidebar = ({ setSelectedChat }) => {
   const token = localStorage.getItem("token");
-  const user = JSON.parse(localStorage.getItem("user"));
   const [friendsList, setFriends] = useState([]);
-  const [selectedUser, setSelectedUser] = useState("");
+  const [activeIndex, setActiveIndex] = useState(null);
 
-  localStorage.setItem("selectedUser", selectedUser);
   useEffect(() => {
     const friends = async () => {
       try {
@@ -19,7 +17,7 @@ const Sidebar = ({ setSelectedChat }) => {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
         setFriends(api.data?.friends);
       } catch (e) {
@@ -30,7 +28,7 @@ const Sidebar = ({ setSelectedChat }) => {
   }, []);
   console.log("friendslist", friendsList);
   const handleSelect = (id) => {
-    localStorage.setItem("selectedUser", id); // optional (for refresh)
+    localStorage.setItem("selectedUser", JSON.stringify(id)); // optional (for refresh)
     setSelectedChat(id); // 🔥 THIS triggers re-render
   };
   return (
@@ -47,9 +45,12 @@ const Sidebar = ({ setSelectedChat }) => {
         {friendsList.length > 0 ? (
           friendsList.map((friend, i) => (
             <div
-              className="flex items-center gap-3 p-4 hover:bg-[#5154552a] cursor-pointer"
+              className={`flex items-center gap-3 p-4 ${activeIndex === i && "bg-white text-black"} cursor-pointer`}
               key={friend._id}
-              onClick={() => handleSelect(friend._id)}
+              onClick={() => {
+                handleSelect(friend);
+                setActiveIndex(i);
+              }}
             >
               <img
                 src="https://i.pravatar.cc/35"

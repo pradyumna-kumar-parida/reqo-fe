@@ -5,7 +5,7 @@ import MenuReqo from "./Menu";
 import logo from "../../public/chat.png";
 export default function LandPage() {
   const [selectedChat, setSelectedChat] = useState(
-    localStorage.getItem("selectedUser")
+    localStorage.getItem("selectedUser"),
   );
   return (
     <>

@@ -1,7 +1,7 @@
 import React from "react";
 import { CiMenuKebab } from "react-icons/ci";
 const ChatWindow = ({ user }) => {
-  console.log("userrrr", user);
+  console.log("userrrr", user.firstName);
 
   return (
     <div className="h-full w-full flex flex-col">
@@ -14,7 +14,9 @@ const ChatWindow = ({ user }) => {
             className="w-10 h-10 rounded-full"
           />
           <span className="flex flex-col gap-0">
-            <p className="font-bold text-xl  text-black">Niku</p>
+            <p className="font-bold text-xl  text-black">
+              {user?.firstName} {user?.lastName}
+            </p>
             <h6 className="text-gray-600 text-sm">Online</h6>
           </span>
         </span>
@@ -50,3 +52,4 @@ const ChatWindow = ({ user }) => {
 };
 
 export default ChatWindow;
+
